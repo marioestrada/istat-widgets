@@ -96,9 +96,9 @@ function getProcesses() {
 		widget.setPreferenceForKey("cpu","processesMode");
 
 	if(widget.preferenceForKey("processesMode") == 'cpu')
-		widget.system('ps -arcwwwxo "pid %cpu command" | egrep "PID|$1" | grep -v grep | head -7 | tail -6 | awk \'{print "<pid>"$1"</pid><cpu>"$2"</cpu><name>"$3,$4,$5"</name></item>"}\'',processesOut);
+		widget.system('ps -arcwwwxo "pid %cpu command" | egrep "PID| $1" | grep -v grep | head -7 | tail -6 | awk \'{print "<pid>"$1"</pid><cpu>"$2"</cpu><name>"$3,$4,$5"</name></item>"}\'',processesOut);
 	else
-		widget.system('ps -amcwwwxo "pid rss command"  | egrep "PID|$1" | grep -v grep | head -7 | tail -6 | awk \'{print "<pid>"$1"</pid><cpu>"$2"</cpu><name>"$3,$4,$5"</name></item>"}\'',processesOut);
+		widget.system('ps -amcwwwxo "pid rss command"  | egrep "PID| $1" | grep -v grep | head -7 | tail -6 | awk \'{print "<pid>"$1"</pid><cpu>"$2"</cpu><name>"$3,$4,$5"</name></item>"}\'',processesOut);
 }
 
 function processesOut(data) {
